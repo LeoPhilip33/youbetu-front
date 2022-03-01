@@ -1,0 +1,10 @@
+.logo{
+    width: 170px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(0, 0%, 18.82%);
+    color: white;
+}
