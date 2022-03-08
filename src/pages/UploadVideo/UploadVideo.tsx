@@ -80,12 +80,12 @@ class Register extends React.Component {
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data">
                     <div className="label-input-container">
                         <label> titre:</label>
-                        <input type="text" name="name" onChange={this.handleChangeTitle} />
+                        <input type="text" name="titre" onChange={this.handleChangeTitle} />
                     </div>
                     <div className="label-input-container">
 
                         <label> description:</label>
-                        <input type="email" name="email" onChange={this.handleChangeDescription} />
+                        <textarea name="description" onChange={this.handleChangeDescription} > </textarea>
                     </div>
                     <div className="label-input-container">
 

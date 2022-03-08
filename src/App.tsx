@@ -8,6 +8,9 @@ import Register from './pages/Auth/Register';
 import UploadVideo from './pages/UploadVideo/UploadVideo';
 
 function App() {
+
+
+
 	return (
 
 
