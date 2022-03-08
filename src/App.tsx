@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from './pages/Home/Home';
 import Register from './pages/Auth/Register';
 import UploadVideo from './pages/UploadVideo/UploadVideo';
+import Video from './pages/Video/Video';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 						<Route path="/" element={<Home />}></Route>
 						<Route path="/register" element={<Register />}></Route>
 						<Route path="/upload-video" element={<UploadVideo />}></Route>
+						<Route path="/watch/:id" element={<Video />}></Route>
 					</Routes>
 				</div >
 			</div >
