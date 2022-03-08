@@ -8,6 +8,6 @@
     display: flex;
 }
 .container-app{
-    margin-left: 20%;
-    margin-top: 60px;
+    width: 100%;
+    height: calc(100vh - 50px);
 }

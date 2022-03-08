@@ -1,0 +1,62 @@
+.container-import-video{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #3f3f3f;
+}
+.titre-upload{
+    margin-top: 1rem;
+}
+.titre-input-upload{
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-bottom: 3px solid black;
+
+}
+.textarea-input-upload{
+    border: 0px;
+    border-bottom: 3px solid black;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    max-height: 200px;
+    resize: vertical;
+}
+.textarea-input-upload::placeholder{
+    padding: 10px;
+}
+.container-btn-upload{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.submit-btn-upload{
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0px;
+    transition: 0.1s;
+}
+.submit-btn-upload:hover{
+    font-size: 1.03rem;
+    transition: 0.1s;
+}
+.container-import-video-modifications{
+    background-color: white;
+    padding: 40px;
+}
+.title-import-video{
+    text-align: center;
+}
+.flex-uploads{
+    display: flex;
+    margin-top: 20px;
+}
+.title-upload{
+    font-size: 0.9rem;
+    color: #444444;
+}

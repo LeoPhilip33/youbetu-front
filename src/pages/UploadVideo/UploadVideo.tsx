@@ -75,32 +75,31 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div className="auth-container" >
-                <h1>Upload video</h1>
-                <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-                    <div className="label-input-container">
-                        <label> titre:</label>
-                        <input type="text" name="titre" onChange={this.handleChangeTitle} />
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> description:</label>
-                        <textarea name="description" onChange={this.handleChangeDescription} > </textarea>
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> video:</label>
-                        <input type="file" name="video" onChange={this.handleChangeVideo} />
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> miniature:</label>
-                        <input type="file" name="miniature" onChange={this.handleChangeMiniature} />
-
-                        <button type="submit"> Add </button>
-                    </div>
-                </form>
-
+            <div className='container-import-video'>
+                <div className='container-import-video-modifications'>
+                    <h1 className='title-import-video'>Importer des vidéos</h1>
+                    <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+                        <div className='titre-upload'>
+                            <input className='titre-input-upload' required type="text" placeholder='Titre (obligatoire)' name="titre" onChange={this.handleChangeTitle} />
+                        </div>
+                        <div className='titre-upload'>
+                            <textarea className='textarea-input-upload' name="description" placeholder='Description' onChange={this.handleChangeDescription} ></textarea>
+                        </div>
+                        <div className='flex-uploads'>
+                            <div>
+                                <div> <label className='title-upload'>Uploader votre vidéo :</label> </div>
+                                <div> <input type="file" name="video" onChange={this.handleChangeVideo} /> </div>
+                            </div>
+                            <div>
+                                <div> <label className='title-upload'> Miniature de la vidéo :</label> </div>
+                                <div> <input type="file" name="miniature" onChange={this.handleChangeMiniature} /> </div>
+                            </div>
+                        </div>
+                        <div className='container-btn-upload'>
+                            <button className='submit-btn-upload' type="submit"> Enregistrer la vidéo </button>
+                        </div>
+                    </form>
+                </div>
             </div >
         );
     }
