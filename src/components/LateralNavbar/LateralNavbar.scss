@@ -2,7 +2,9 @@
     position: fixed;
     background-color: hsl(0, 0%, 18.82%);
     color: white;
-    height: 100vh;
+    height: calc(100vh - 50px);
+    top: 50px;
+    left: 0;
 }
 .container-lateral-navbar{
     width: 14rem;
