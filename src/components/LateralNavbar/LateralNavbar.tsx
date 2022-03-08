@@ -1,12 +1,12 @@
-import './LateralNavbar.css';
+import './LateralNavbar.scss';
 import logo_home from '../../img/home.png';
 import logo_explorer from '../../img/explorer.png';
 import logo_like from '../../img/like.png';
 import logo_abonnement from '../../img/abonnement.png';
 
 function LateralNavbar() {
-  return (
-      <div className='lateral-navbar'>
+    return (
+        <div className='lateral-navbar'>
             <div className='alignement-logo'>
                 <img src={logo_home} className="logo_lateral" alt="Home youbetu" />
                 <div> Accueil </div>
@@ -26,8 +26,8 @@ function LateralNavbar() {
                 <img src={logo_abonnement} className="logo_lateral" alt="Like youbetu" />
                 <div> ABONNEMENTS </div>
             </div>
-      </div>
-  );
+        </div>
+    );
 }
 
 export default LateralNavbar;

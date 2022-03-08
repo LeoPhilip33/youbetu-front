@@ -1,6 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .flex-container-navbar{
     display: flex;
 }
 .container-app{
-    margin-left: 14rem;
+    margin-left: 20%;
+    margin-top: 60px;
 }
