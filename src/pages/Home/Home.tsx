@@ -4,6 +4,7 @@ import VideoMiniature from '../../components/Video/VideoMiniature';
 import React from "react";
 import axios from 'axios'
 import url from '../../config';
+import LateralNavbar from '../../components/LateralNavbar/LateralNavbar';
 
 function Home() {
     const [videos, setVideos] = React.useState([])
@@ -17,6 +18,8 @@ function Home() {
     }, []);
     return (
         <div className='home-page'>
+
+            <LateralNavbar />
             <h1>Home page</h1>
 
             <section className='video-container'>

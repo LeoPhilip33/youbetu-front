@@ -5,6 +5,7 @@ import url from "../../config";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import { getUserId, authenticatedFetch } from '../../utils'
+import LateralNavbar from '../../components/LateralNavbar/LateralNavbar';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -76,6 +77,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className='container-import-video'>
+                <LateralNavbar />
                 <div className='container-import-video-modifications'>
                     <h1 className='title-import-video'>Importer des vidéos</h1>
                     <form onSubmit={this.handleSubmit} encType="multipart/form-data">

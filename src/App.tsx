@@ -19,7 +19,6 @@ function App() {
 			<div className='container'></div>
 			<Navbar />
 			<div className='flex-container-navbar'>
-				<LateralNavbar />
 				<div className='container-app'>
 
 					<Routes>

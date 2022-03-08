@@ -5,6 +5,7 @@ import './Auth.scss';
 import './Register.scss'
 import { useNavigate } from 'react-router-dom'
 import { BrowserRouter as Redirect, Router, Route, Routes } from "react-router-dom"
+import LateralNavbar from "../../components/LateralNavbar/LateralNavbar";
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -70,6 +71,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className="auth-container" >
+                <LateralNavbar />
                 <form onSubmit={this.handleSubmit}>
                     <div className="label-input-container">
                         <label> name:</label>
