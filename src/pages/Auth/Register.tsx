@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import url from "../../config";
 import './Auth.scss';
+import './Register.scss'
 import { useNavigate } from 'react-router-dom'
 import { BrowserRouter as Redirect, Router, Route, Routes } from "react-router-dom"
 
@@ -86,10 +87,10 @@ class Register extends React.Component {
                     </div>
                     <div className="label-input-container">
 
-                        <label> password:</label>
+                        <label> Confirme le password:</label>
                         <input type="password" name="passwordConfirmation" onChange={this.handleChangePasswordConfirmation} />
 
-                        <button type="submit"> Add </button>
+                        <button className='ajouter-compter' type="submit"> Ajouter </button>
                     </div>
                 </form>
 

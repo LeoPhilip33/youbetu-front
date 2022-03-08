@@ -1,14 +1,18 @@
-.LateralNavbar{
+.lateral-navbar{
     position: fixed;
-    margin-top: 50px;
-    max-width: 300px;
     background-color: hsl(0, 0%, 18.82%);
     color: white;
     height: 100vh;
+    width: 13rem;
 }
-.hr-lateral-navbar{
-    width: 100%;
-    height: 2px;
+.logo_lateral{
+    width: 20px;
+    margin-right: 15px;
+    height: fit-content;
+}
 
-    background-color: black;
+.alignement-logo{
+    display: flex;
+    align-items: center;
+    margin: 20px 20px;
 }
