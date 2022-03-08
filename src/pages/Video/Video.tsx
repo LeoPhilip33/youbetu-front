@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Route, Link, Routes, useSearchParams, useParam
 import React from "react";
 import axios from 'axios'
 import url from '../../config';
+import ReactPlayer from 'react-player'
+import like from '../../img/icons/like.png';
+import dislike from '../../img/icons/dislike.png';
 
 function Video() {
     const [video, setVideo] = React.useState({
@@ -36,11 +39,16 @@ function Video() {
     }, []);
     return (
         <section>
-            <h1>{video.title}</h1>
-            <video muted autoPlay src={uploadUrl + '/videos/' + video.video}></video>
-            <p>{video.views}</p>
-            <p>{video.likes}</p>
-            <p>{video.created_at}</p>
+            <div className='video-container'>
+                <ReactPlayer controls={true} url={uploadUrl + '/videos/' + video.video} />
+                <h1>{video.title}</h1>
+                <div className='view-container'>
+                    <p>{video.views} vues</p>
+                    <p>{video.likes}</p>
+                    <p>{video.created_at.substring(0, 10)}</p>
+                </div>
+            </div>
+
         </section>
     );
 }
