@@ -9,16 +9,20 @@ import Register from './pages/Auth/Register';
 function App() {
   return (
     <div className='container'>
-      <Router>
-        <Navbar />
-        <LateralNavbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-
-        </Routes>
-      </Router>
-
+      <Navbar />
+      <div className='flex-container-navbar'>
+        <div>
+          <LateralNavbar />
+        </div>
+        <div className='container-app'>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/register" element={<Register />}></Route>
+            </Routes>
+          </Router>
+        </div>
+      </div>
     </div>
   );
 }

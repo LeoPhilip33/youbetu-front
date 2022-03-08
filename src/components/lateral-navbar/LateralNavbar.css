@@ -1,4 +1,6 @@
 .LateralNavbar{
+    position: fixed;
+    margin-top: 50px;
     max-width: 300px;
     background-color: hsl(0, 0%, 18.82%);
     color: white;

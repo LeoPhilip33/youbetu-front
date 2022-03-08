@@ -1,3 +1,7 @@
-.container {
-  
+.flex-container-navbar{
+    display: flex;
+}
+.container-app{
+    margin-left: 20%;
+    margin-top: 60px;
 }
