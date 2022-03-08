@@ -29,6 +29,7 @@ class Register extends React.Component {
         axios.post(`${url}/register`, user).then((res) => {
             console.log(res.data)
             localStorage.token = res.data[2]
+            localStorage.userId = res.data[0].id
             let navigate = useNavigate()
             navigate("/home")
         }).catch((error) => {
