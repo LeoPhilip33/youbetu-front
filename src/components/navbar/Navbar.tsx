@@ -3,6 +3,7 @@ import upload from '../../img/upload.png'
 import search from '../../img/search.png'
 import user from '../../img/profile.png'
 import './Navbar.css';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"
 
 function Navbar() {
   return (
