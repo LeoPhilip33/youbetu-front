@@ -1,8 +1,8 @@
-import './LateralNavbar.css';
+import './LateralNavbar.scss';
 
 function LateralNavbar() {
-  return (
-      <div className='LateralNavbar'>
+    return (
+        <div className='LateralNavbar'>
             <div>
                 <div> LOGO </div>
                 <div> Accueil </div>
@@ -21,8 +21,8 @@ function LateralNavbar() {
             <div className='hr-lateral-navbar'></div>
 
             ABONNEMENTS
-      </div>
-  );
+        </div>
+    );
 }
 
 export default LateralNavbar;
