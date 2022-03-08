@@ -20,7 +20,9 @@ function Navbar() {
             </div>
             <div className='d-flex'>
                 <div>
-                    <img src={upload} className="upload" alt="Upload vidéo" />
+                    <Link to="upload-video">
+                        <img src={upload} className="upload" alt="Upload vidéo" />
+                    </Link>
                 </div>
                 <div>
                     <img src={user} className="user" alt="user" />
