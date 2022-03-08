@@ -1,0 +1,12 @@
+.LateralNavbar{
+    max-width: 300px;
+    background-color: hsl(0, 0%, 18.82%);
+    color: white;
+    height: 100vh;
+}
+.hr-lateral-navbar{
+    width: 100%;
+    height: 2px;
+
+    background-color: black;
+}
