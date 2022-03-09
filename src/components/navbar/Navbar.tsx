@@ -2,11 +2,27 @@ import logo from '../../img/youbetu.png';
 import upload from '../../img/upload.png'
 import search from '../../img/search.png'
 import user from '../../img/profile.png'
-import menuBurger from '../../img/menu-burger.png'
 import './Navbar.scss';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import url, { uploadUrl } from '../../config';
+import { authenticatedFetch } from '../../utils';
+import UserInfo from './UserInfo';
 
 function Navbar() {
+
+    const [photo, setPhoto] = useState('')
+    const [userVisible, setUserVisible] = useState(false)
+
+
+    useEffect(() => {
+        authenticatedFetch('GET', `/user/${localStorage.userId}`)
+            .then((res) => {
+                setPhoto(res.data.photo);
+
+            })
+    }, []);
     return (
         <div className='navbar'>
             <div className='menu-logo'>
@@ -33,7 +49,7 @@ function Navbar() {
                     {localStorage.token !== null && localStorage.token !== undefined ?
 
                         <button>
-                            <img src={user} className="user" alt="user" />
+                            <img src={uploadUrl + '/photos/' + photo} onClick={() => setUserVisible(!userVisible)} className="user" alt="user" />
                         </button>
                         :
                         <Link className='login-btn' to="login">
@@ -42,6 +58,10 @@ function Navbar() {
                     }
                 </div>
             </div>
+            {userVisible ?
+                < UserInfo />
+                : ''
+            }
         </div>
     );
 }

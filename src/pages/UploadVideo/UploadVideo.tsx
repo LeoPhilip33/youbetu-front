@@ -34,14 +34,15 @@ class Register extends React.Component {
         data.append('video', this.state.video)
         data.append('user_id', localStorage.userId)
 
-        axios.post(`${url}/videos`, data).then((res) => {
-            console.log(res.data)
-            localStorage.token = res.data[2]
-            let navigate = useNavigate()
-            navigate("/home")
-        }).catch((error) => {
-            console.error(error)
-        })
+        authenticatedFetch('POST', `/videos`, data)
+            .then((res) => {
+                console.log(res.data)
+                localStorage.token = res.data[2]
+                let navigate = useNavigate()
+                navigate("/home")
+            }).catch((error) => {
+                console.error(error)
+            })
 
 
 

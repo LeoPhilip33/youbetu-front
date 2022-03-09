@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import url from "../../config"
 import './Auth.scss'
 import LateralNavbar from "../../components/LateralNavbar/LateralNavbar";
+import { Link } from "react-router-dom";
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -62,6 +63,7 @@ function Login() {
                     <input type="password" name="password" value={state.password} onChange={handleChangePassword} />
                 </div>
                 <button className='ajouter-compter' type="submit"> Valider </button>
+                <p>Pas de compte ? <Link to='/register'>Créer un compte</Link></p>
             </form>
 
         </div >

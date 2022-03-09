@@ -1,104 +1,142 @@
 import axios from "axios"
-import React from "react"
+import React, { useState } from "react"
 import url from "../../config"
 import './Auth.scss'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BrowserRouter as Redirect, Router, Route, Routes } from "react-router-dom"
 import LateralNavbar from "../../components/LateralNavbar/LateralNavbar"
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
-class Register extends React.Component {
-    constructor(props: any) {
-        super(props);
-    }
-    state = {
+
+interface Istate {
+    name: string;
+    email: string;
+    photo: any;
+    password: string;
+    password_confirmation: string;
+
+}
+
+function Register() {
+    const [state, setState] = useState<Istate>({
         name: '',
         email: '',
+        photo: null,
         password: '',
         password_confirmation: '',
-    };
-    handleSubmit = (event: { preventDefault: () => void; }) => {
+    })
 
-        event.preventDefault();
-        const user = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            password_confirmation: this.state.password_confirmation,
-        }
-        axios.post(`${url}/register`, user).then((res) => {
-            console.log(res.data)
-            localStorage.token = res.data[2]
-            localStorage.userId = res.data[0].id
-            let navigate = useNavigate()
-            navigate("/home")
-        }).catch((error) => {
-            console.error(error)
+    const handleChangeName = (e: { target: { value: any } }) => {
+        setState({
+            name: e.target.value,
+            email: state.email,
+            photo: state.photo,
+            password: state.password,
+            password_confirmation: state.password_confirmation,
         })
-
     }
-    handleChangeName = (event: { target: { value: any; }; }) => {
-        this.setState(
-            {
-                name: event.target.value,
-            }
-        );
+    const handleChangeEmail = (e: { target: { value: any } }) => {
+        setState({
+            name: state.name,
+            email: e.target.value,
+            photo: state.photo,
+            password: state.password,
+            password_confirmation: state.password_confirmation,
+        })
     }
-    handleChangeEmail = (event: { target: { value: any; }; }) => {
-        this.setState(
-            {
-                email: event.target.value,
-            }
-        );
+    const handleChangePassword = (e: { target: { value: any } }) => {
+        setState({
+            name: state.name,
+            email: state.email,
+            photo: state.photo,
+            password: e.target.value,
+            password_confirmation: state.password_confirmation,
+        })
     }
-    handleChangePassword = (event: { target: { value: any; }; }) => {
-        this.setState(
-            {
-                password: event.target.value,
-            }
-        );
-    }
-    handleChangePasswordConfirmation = (event: { target: { value: any; }; }) => {
-        this.setState(
-            {
-                password_confirmation: event.target.value,
-            }
-        );
+    const handleChangePasswordConfirmation = (e: { target: { value: any } }) => {
+        setState({
+            name: state.name,
+            email: state.email,
+            photo: state.photo,
+            password: state.password,
+            password_confirmation: e.target.value,
+        })
     }
 
-    render() {
-        return (
-            <div className="auth-container" >
-                <LateralNavbar />
-                <form onSubmit={this.handleSubmit}>
-                    <div className="label-input-container">
-                        <label> name:</label>
-                        <input type="text" name="name" onChange={this.handleChangeName} />
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> email:</label>
-                        <input type="email" name="email" onChange={this.handleChangeEmail} />
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> password:</label>
-                        <input type="password" name="password" onChange={this.handleChangePassword} />
-                    </div>
-                    <div className="label-input-container">
-
-                        <label> Confirme le password:</label>
-                        <input type="password" name="passwordConfirmation" onChange={this.handleChangePasswordConfirmation} />
-
-                        <button className='ajouter-compter' type="submit"> Ajouter </button>
-                    </div>
-                </form>
-
-            </div >
-        );
+    const handleChangePhoto = (e: any) => {
+        console.log('img change')
+        console.log(e)
+        setState({
+            name: state.name,
+            email: state.email,
+            photo: e.target.files[0],
+            password: state.password,
+            password_confirmation: state.password_confirmation,
+        })
     }
+
+
+
+    const handleSubmit = (e: { preventDefault: VoidFunction }) => {
+        console.log(state.photo)
+
+        e.preventDefault();
+        const data = new FormData()
+
+
+        data.append('name', state.name)
+        data.append('email', state.email)
+        data.append('photo', state.photo)
+        data.append('password', state.password)
+        data.append('password_confirmation', state.password_confirmation)
+
+        axios.post(`${url}/register`, data)
+            .then((res) => {
+                localStorage.token = res.data[2]
+                localStorage.userId = res.data[0].id
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
+
+
+    return (
+        <div className="auth-container" >
+            <LateralNavbar />
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <div className="label-input-container">
+                    <label> name:</label>
+                    <input type="text" name="name" onChange={handleChangeName} value={state.name} />
+                </div>
+                <div className="label-input-container">
+                    <label> email:</label>
+                    <input type="email" name="email" onChange={handleChangeEmail} value={state.email} />
+                </div>
+                <div className="label-input-container">
+                    <label> photo:</label>
+                    <input type="file" name="photo" onChange={handleChangePhoto} />
+                </div>
+                <div className="label-input-container">
+
+                    <label> password:</label>
+                    <input type="password" name="password" onChange={handleChangePassword} value={state.password} />
+                </div>
+                <div className="label-input-container">
+
+                    <label> Confirme le password:</label>
+                    <input type="password" name="passwordConfirmation" onChange={handleChangePasswordConfirmation} value={state.password_confirmation} />
+
+                    <button className='ajouter-compter' type="submit"> Ajouter </button>
+                    <p>Déjà un compte ? <Link to='/login'>Connecte toi</Link></p>
+                </div>
+            </form>
+
+        </div >
+    )
 }
+
 
 
 export default Register
