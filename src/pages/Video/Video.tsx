@@ -2,7 +2,7 @@
 import './Video.scss';
 import { uploadUrl } from '../../config';
 import { BrowserRouter as Router, Route, Link, Routes, useSearchParams, useParams } from "react-router-dom"
-import React from "react";
+import React, { useState } from "react";
 import axios from 'axios'
 import url from '../../config';
 import ReactPlayer from 'react-player'
@@ -14,9 +14,16 @@ import shareImg from '../../img/icons/share.png';
 import downloadImg from '../../img/icons/download.png';
 import moreImg from '../../img/icons/more.png';
 import { authenticatedFetch } from '../../utils';
+import Comment from '../../components/Comment/Comment'
 
 
-function Video() {
+function Video(this: any) {
+
+    const [state, setState] = useState({
+        comment: '',
+    })
+
+    const [comments, setComments] = React.useState([])
     const [video, setVideo] = React.useState({
         id: '',
         title: '',
@@ -41,6 +48,26 @@ function Video() {
     const [dislikeValue, setDislikeValue] = React.useState<any>(false)
     let { id } = useParams();
 
+    const handleChangeComment = (e: { target: { value: any } }) => {
+        setState({
+            comment: e.target.value,
+        })
+    }
+
+    const submit = () => {
+        console.log('aaaaaaaa')
+        const data = {
+            video_id: video.id,
+            user_id: user.id,
+            comment: state.comment
+        }
+        authenticatedFetch('POST', `/comment`, data)
+            .then(res => {
+                getVideo()
+            })
+
+    }
+
     const subscribe = (e: any) => {
         const data = {
             user_id: e,
@@ -53,8 +80,8 @@ function Video() {
             })
     }
 
-    const getVideo = () => {
-        axios.get(`${url}/video/${id}`)
+    const getVideo = async () => {
+        await axios.get(`${url}/video/${id}`)
             .then((res) => {
                 let dataVideo = res.data[0]
                 let dataUser = res.data[1]
@@ -76,25 +103,26 @@ function Video() {
                     subscriber: dataUser.subscriber,
 
                 });
+                getComments(res.data[0].id)
+            })
+            .finally(() => {
+
             })
     }
-    const checkSub = () => {
+    const checkSub = async () => {
         const data = {
             id: id,
             subscriber: localStorage.userId
         }
-        axios.get(`${url}/check-sub/${id}&${localStorage.userId}`)
+        await axios.get(`${url}/check-sub/${id}&${localStorage.userId}`)
             .then((res) => {
                 setSub(res.data)
 
             })
     }
-    const checkLike = () => {
-        const data = {
-            id: id,
-            subscriber: localStorage.userId
-        }
-        axios.get(`${url}/check-like/${id}&${localStorage.userId}`)
+    const checkLike = async () => {
+
+        await axios.get(`${url}/check-like/${id}&${localStorage.userId}`)
             .then((res) => {
                 setLikeValue(res.data)
 
@@ -116,12 +144,9 @@ function Video() {
             })
     }
 
-    const checkDislike = () => {
-        const data = {
-            id: id,
-            subscriber: localStorage.userId
-        }
-        axios.get(`${url}/check-dislike/${id}&${localStorage.userId}`)
+    const checkDislike = async () => {
+
+        await axios.get(`${url}/check-dislike/${id}&${localStorage.userId}`)
             .then((res) => {
                 setDislikeValue(res.data)
 
@@ -143,12 +168,21 @@ function Video() {
             })
     }
 
+    const getComments = async (e: Number) => {
+        await axios.get(`${url}/comments/${e}`)
+            .then(res => {
+                console.log(res.data)
+                setComments(res.data)
+            })
+    }
+
     React.useEffect(() => {
         getVideo()
         checkSub()
         checkLike()
         checkDislike()
     }, []);
+
     return (
         <section className='video-suggestion-container'>
             <div className='video-container'>
@@ -214,8 +248,18 @@ function Video() {
                 <div className='description'>
                     {video.description}
                 </div>
+                <div className="comments-container">
+                    <input type="text" value={state.comment} onChange={handleChangeComment} />
+                    <button onClick={() => submit()}>Valider</button>
+                    <div className='other-comments-container'>
+                        {comments.map((comment, index) => {
+                            return <Comment key={index} {...comment} />
+                        })}
+                    </div>
+                </div>
             </div>
             <div className="suggestion-container">
+
             </div>
 
         </section>
