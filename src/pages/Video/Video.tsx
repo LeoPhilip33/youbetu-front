@@ -58,7 +58,7 @@ function Video(this: any) {
         console.log('aaaaaaaa')
         const data = {
             video_id: video.id,
-            user_id: user.id,
+            user_id: localStorage.userId,
             comment: state.comment
         }
         authenticatedFetch('POST', `/comment`, data)
