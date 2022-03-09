@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import Home from './pages/Home/Home';
 import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
 import UploadVideo from './pages/UploadVideo/UploadVideo';
 import Video from './pages/Video/Video';
 
@@ -24,6 +25,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />}></Route>
 						<Route path="/register" element={<Register />}></Route>
+						<Route path="/login" element={<Login />}></Route>
 						<Route path="/upload-video" element={<UploadVideo />}></Route>
 						<Route path="/watch/:id" element={<Video />}></Route>
 					</Routes>

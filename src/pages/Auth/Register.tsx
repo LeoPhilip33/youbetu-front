@@ -1,13 +1,12 @@
-import axios from "axios";
-import React from "react";
-import url from "../../config";
-import './Auth.scss';
-import './Register.scss'
+import axios from "axios"
+import React from "react"
+import url from "../../config"
+import './Auth.scss'
 import { useNavigate } from 'react-router-dom'
 import { BrowserRouter as Redirect, Router, Route, Routes } from "react-router-dom"
-import LateralNavbar from "../../components/LateralNavbar/LateralNavbar";
+import LateralNavbar from "../../components/LateralNavbar/LateralNavbar"
 
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 class Register extends React.Component {
     constructor(props: any) {

@@ -7,29 +7,43 @@ import './Navbar.scss';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"
 
 function Navbar() {
-  return (
-      <div className='navbar'>
+    return (
+        <div className='navbar'>
             <div className='menu-logo'>
                 <Link to="/">
                     <img src={logo} className="logo" alt="logo Youbetu" />
                 </Link>
             </div>
             <div className='d-flex search-bar'>
-                <input type="text" placeholder="Rechercher" className="input-search-bar"/>
+                <input type="text" placeholder="Rechercher" className="input-search-bar" />
                 <img src={search} className="search" alt="Logo youbetu" />
             </div>
             <div className='d-flex'>
                 <div>
-                    <Link to="upload-video">
-                        <img src={upload} className="upload" alt="Upload vidéo" />
-                    </Link>
+                    {localStorage.token !== null && localStorage.token !== undefined ?
+
+                        <Link to="upload-video">
+                            <img src={upload} className="upload" alt="Upload vidéo" />
+                        </Link>
+                        :
+                        ''
+                    }
                 </div>
                 <div>
-                    <img src={user} className="user" alt="user" />
+                    {localStorage.token !== null && localStorage.token !== undefined ?
+
+                        <button>
+                            <img src={user} className="user" alt="user" />
+                        </button>
+                        :
+                        <Link className='login-btn' to="login">
+                            Se connecter
+                        </Link>
+                    }
                 </div>
             </div>
-      </div>
-  );
+        </div>
+    );
 }
 
 export default Navbar;
