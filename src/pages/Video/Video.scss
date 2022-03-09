@@ -86,6 +86,7 @@
                         font-size: 1.4rem;
                         padding: .75rem 1.5rem;
                         font-weight: 500;
+                        cursor: pointer;
 
                         &.join{
                             color: $blue;
@@ -98,6 +99,12 @@
                             color: $white;
                             border: 1px solid $red;
                             background-color: $red;
+
+                            &.active{ 
+                                border: unset;
+                                background-color: $light-grey;
+                                color: $grey;
+                            }
                         }
                     }
                     
