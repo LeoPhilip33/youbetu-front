@@ -110,10 +110,34 @@ function Video() {
             })
     }
 
+    const checkDislike = () => {
+        const data = {
+            id: id,
+            subscriber: localStorage.userId
+        }
+        axios.get(`${url}/check-dislike/${id}&${localStorage.userId}`)
+            .then((res) => {
+                setDislikeValue(res.data)
+
+            })
+    }
+
+    const dislike = (e: string) => {
+        const data = {
+            video_id: e,
+            disliker_id: localStorage.userId
+        }
+        authenticatedFetch('POST', `/dislike`, data)
+            .then(res => {
+                getVideo()
+            })
+    }
+
     React.useEffect(() => {
         getVideo()
         checkSub()
         checkLike()
+        checkDislike()
     }, []);
     return (
         <section className='video-suggestion-container'>
@@ -131,7 +155,7 @@ function Video() {
                             <img src={likeImg} alt="" />
                             <p>{video.likes}</p>
                         </div>
-                        <div className="dislike-container">
+                        <div onClick={() => dislike(video.id)} className="dislike-container">
                             <img src={dislikeImg} alt="" />
                             <p>{video.dislikes}</p>
                         </div>
