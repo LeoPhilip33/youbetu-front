@@ -7,7 +7,9 @@ import axios from 'axios'
 import url from '../../config';
 import ReactPlayer from 'react-player'
 import likeImg from '../../img/icons/like.png';
+import likeImgChecked from '../../img/icons/like-checked.png';
 import dislikeImg from '../../img/icons/dislike.png';
+import dislikeImgChecked from '../../img/icons/dislike-checked.png';
 import shareImg from '../../img/icons/share.png';
 import downloadImg from '../../img/icons/download.png';
 import moreImg from '../../img/icons/more.png';
@@ -35,8 +37,8 @@ function Video() {
     })
 
     const [sub, setSub] = React.useState(false)
-    const [likeValue, setLikeValue] = React.useState(false)
-    const [dislikeValue, setDislikeValue] = React.useState(false)
+    const [likeValue, setLikeValue] = React.useState<any>(false)
+    const [dislikeValue, setDislikeValue] = React.useState<any>(false)
     let { id } = useParams();
 
     const subscribe = (e: any) => {
@@ -107,6 +109,10 @@ function Video() {
         authenticatedFetch('POST', `/like`, data)
             .then(res => {
                 getVideo()
+                setLikeValue(res.data)
+                if (res.data == 1 && dislikeValue == 1) {
+                    dislike(e)
+                }
             })
     }
 
@@ -130,6 +136,10 @@ function Video() {
         authenticatedFetch('POST', `/dislike`, data)
             .then(res => {
                 getVideo()
+                setDislikeValue(res.data)
+                if (res.data == 1 && likeValue == 1) {
+                    like(e)
+                }
             })
     }
 
@@ -152,11 +162,19 @@ function Video() {
                     </div>
                     <div className='video-info-container'>
                         <div onClick={() => like(video.id)} className="like-container">
-                            <img src={likeImg} alt="" />
+                            {likeValue ?
+                                <img src={likeImgChecked} alt="" />
+                                :
+                                <img src={likeImg} alt="" />
+                            }
                             <p>{video.likes}</p>
                         </div>
                         <div onClick={() => dislike(video.id)} className="dislike-container">
-                            <img src={dislikeImg} alt="" />
+                            {dislikeValue ?
+                                <img src={dislikeImgChecked} alt="" />
+                                :
+                                <img src={dislikeImg} alt="" />
+                            }
                             <p>{video.dislikes}</p>
                         </div>
                         <div className="share-container">
