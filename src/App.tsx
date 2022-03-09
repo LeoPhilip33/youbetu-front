@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import LateralNavbar from './components/LateralNavbar/LateralNavbar'
 import Navbar from './components/navbar/Navbar'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"

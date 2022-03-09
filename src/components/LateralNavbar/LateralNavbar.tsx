@@ -12,24 +12,27 @@ function LateralNavbar() {
                 <Link className='text-decoration-none-link' to="/">
                     <div className='alignement-logo'>
                         <img src={logo_home} className="logo_lateral" alt="Home youbetu" />
-                        <div> Accueil </div>
+                        <p> Accueil </p>
                     </div>
                 </Link>
-
-                <div className='alignement-logo'>
-                    <img src={logo_explorer} className="logo_lateral" alt="Explorer youbetu" />
-                    <div> Explorer </div>
-                </div>
-
-                <div className='alignement-logo'>
-                    <img src={logo_like} className="logo_lateral" alt="Like youbetu" />
-                    <div> Vidéos "J'aime" </div>
-                </div>
-
-                <div className='alignement-logo'>
-                    <img src={logo_abonnement} className="logo_lateral" alt="Like youbetu" />
-                    <div> ABONNEMENTS </div>
-                </div>
+                <Link className='text-decoration-none-link' to="/">
+                    <div className='alignement-logo'>
+                        <img src={logo_explorer} className="logo_lateral" alt="Explorer youbetu" />
+                        <p> Explorer </p>
+                    </div>
+                </Link>
+                <Link className='text-decoration-none-link' to="/">
+                    <div className='alignement-logo'>
+                        <img src={logo_like} className="logo_lateral" alt="Like youbetu" />
+                        <p> Vidéos "J'aime" </p>
+                    </div>
+                </Link>
+                <Link className='text-decoration-none-link' to="/">
+                    <div className='alignement-logo'>
+                        <img src={logo_abonnement} className="logo_lateral" alt="Like youbetu" />
+                        <p> ABONNEMENTS </p>
+                    </div>
+                </Link>
             </div>
         </div>
 

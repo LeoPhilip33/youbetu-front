@@ -1,13 +1,14 @@
+@import '../../_variables.scss';
 .home-page{
     width: 100%;
-    padding-left: 14rem;
+    padding-left: $navbar-width;
 
     .video-container{
         height: 35vh;
         display: flex;
-        justify-content: space-around;
         flex-wrap: wrap;
         width: 100%;
+        padding: 2rem;
     }
     
 }

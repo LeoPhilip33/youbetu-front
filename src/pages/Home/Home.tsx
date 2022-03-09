@@ -21,7 +21,6 @@ function Home() {
         <div className='home-page'>
 
             <LateralNavbar />
-            <h1>Home page</h1>
 
             <section className='video-container'>
                 {videos.map((video, index) => {

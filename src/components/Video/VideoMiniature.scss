@@ -6,6 +6,12 @@
 
     .video-miniature{
         height: 100%;
+        text-decoration: none;
+        color: black;
+
+        h2{
+            font-size: 1.4rem;
+        }
 
         img{
             width: 100%;
