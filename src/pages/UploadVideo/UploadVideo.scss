@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .container-import-video{
     display: flex;
     flex-direction: column;
@@ -46,7 +48,7 @@
     transition: 0.1s;
 }
 .container-import-video-modifications{
-    background-color: white;
+    background-color: $white;
     padding: 40px;
 }
 .title-import-video{

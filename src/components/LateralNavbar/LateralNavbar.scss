@@ -4,7 +4,7 @@
     .lateral-navbar{
         position: fixed;
         background-color: hsl(0, 0%, 18.82%);
-        color: white;
+        color: $white;
         height: calc(100vh - 50px);
         top: 50px;
         left: 0;
@@ -12,7 +12,7 @@
 
         .text-decoration-none-link{
             text-decoration: none;
-            color: white;
+            color: $white;
 
             .alignement-logo{
                 cursor: pointer;
