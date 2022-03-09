@@ -6,16 +6,17 @@ import React from "react";
 import axios from 'axios'
 import url from '../../config';
 import ReactPlayer from 'react-player'
-import like from '../../img/icons/like.png';
-import dislike from '../../img/icons/dislike.png';
-import share from '../../img/icons/share.png';
-import download from '../../img/icons/download.png';
-import more from '../../img/icons/more.png';
+import likeImg from '../../img/icons/like.png';
+import dislikeImg from '../../img/icons/dislike.png';
+import shareImg from '../../img/icons/share.png';
+import downloadImg from '../../img/icons/download.png';
+import moreImg from '../../img/icons/more.png';
 import { authenticatedFetch } from '../../utils';
 
 
 function Video() {
     const [video, setVideo] = React.useState({
+        id: '',
         title: '',
         description: '',
         video: '',
@@ -34,6 +35,8 @@ function Video() {
     })
 
     const [sub, setSub] = React.useState(false)
+    const [likeValue, setLikeValue] = React.useState(false)
+    const [dislikeValue, setDislikeValue] = React.useState(false)
     let { id } = useParams();
 
     const subscribe = (e: any) => {
@@ -54,6 +57,7 @@ function Video() {
                 let dataVideo = res.data[0]
                 let dataUser = res.data[1]
                 setVideo({
+                    id: dataVideo.id,
                     title: dataVideo.title,
                     description: dataVideo.description,
                     video: dataVideo.video,
@@ -83,10 +87,33 @@ function Video() {
 
             })
     }
+    const checkLike = () => {
+        const data = {
+            id: id,
+            subscriber: localStorage.userId
+        }
+        axios.get(`${url}/check-like/${id}&${localStorage.userId}`)
+            .then((res) => {
+                setLikeValue(res.data)
+
+            })
+    }
+
+    const like = (e: string) => {
+        const data = {
+            video_id: e,
+            liker_id: localStorage.userId
+        }
+        authenticatedFetch('POST', `/like`, data)
+            .then(res => {
+                getVideo()
+            })
+    }
 
     React.useEffect(() => {
         getVideo()
         checkSub()
+        checkLike()
     }, []);
     return (
         <section className='video-suggestion-container'>
@@ -100,24 +127,24 @@ function Video() {
                         <p >{video.views} vues - {video.created_at.substring(0, 10)}</p>
                     </div>
                     <div className='video-info-container'>
-                        <div className="like-container">
-                            <img src={like} alt="" />
+                        <div onClick={() => like(video.id)} className="like-container">
+                            <img src={likeImg} alt="" />
                             <p>{video.likes}</p>
                         </div>
                         <div className="dislike-container">
-                            <img src={dislike} alt="" />
+                            <img src={dislikeImg} alt="" />
                             <p>{video.dislikes}</p>
                         </div>
                         <div className="share-container">
-                            <img src={share} alt="" />
+                            <img src={shareImg} alt="" />
                             <p>Partager</p>
                         </div>
                         <div className="share-container">
-                            <img src={download} alt="" />
+                            <img src={downloadImg} alt="" />
                             <p>Enregistrer</p>
                         </div>
                         <div className="share-container">
-                            <img src={more} alt="" />
+                            <img src={moreImg} alt="" />
 
                         </div>
                     </div>
