@@ -13,7 +13,6 @@ function Home() {
     React.useEffect(() => {
         axios.get(`${url}/videos`)
             .then((res) => {
-                console.log(res.data)
                 setVideos(res.data);
             })
     }, []);
