@@ -1,6 +1,7 @@
 @import '../../variables';
 .video-suggestion-container{
     display: flex;
+    justify-content: space-between;
     width: 100%;
     padding: 2rem 6rem;
 
@@ -120,5 +121,54 @@
             padding-bottom: 2rem;
             border-bottom: 1px solid rgba(0,0,0,.2);
         }
+
+        .comments-container{
+
+            .user-comment{
+                display: flex;
+                align-items: center;
+                .profile-img{
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    padding-left: 2rem;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                    margin-top: 2rem;
+                    input{
+                        margin-top: 2rem;
+                        border: none;
+                        border-bottom: 1px solid $grey;
+                        width: 100%;
+                        padding-bottom: 0.5rem;
+                        &:focus-visible{
+                            outline: none;
+                        }
+                    }
+
+                    button{
+                        background-color: $blue;
+                        color: $white;
+                        border: none;
+                        border-radius: 2px;
+                        padding: 1rem 2rem;
+                        margin-top: 1rem;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    .suggestion-container{
+        width: 28%;
     }
 }

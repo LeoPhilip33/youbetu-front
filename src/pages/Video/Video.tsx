@@ -15,6 +15,7 @@ import downloadImg from '../../img/icons/download.png';
 import moreImg from '../../img/icons/more.png';
 import { authenticatedFetch } from '../../utils';
 import Comment from '../../components/Comment/Comment'
+import VideoMiniature from '../../components/Video/VideoMiniature';
 
 
 function Video(this: any) {
@@ -46,7 +47,29 @@ function Video(this: any) {
     const [sub, setSub] = React.useState(false)
     const [likeValue, setLikeValue] = React.useState<any>(false)
     const [dislikeValue, setDislikeValue] = React.useState<any>(false)
+    const [photo, setPhoto] = React.useState<String>()
+    const [videos, setVideos] = React.useState([])
+
     let { id } = useParams();
+
+
+    const getVideos = () => {
+        axios.get(`${url}/videos`)
+            .then((res) => {
+                setVideos(res.data);
+            })
+
+    };
+
+
+    const setUserPhoto = () => {
+        authenticatedFetch('GET', `/user/${localStorage.userId}`)
+            .then((res) => {
+                setPhoto(res.data.photo);
+
+            })
+    }
+
 
     const handleChangeComment = (e: { target: { value: any } }) => {
         setState({
@@ -181,6 +204,8 @@ function Video(this: any) {
         checkSub()
         checkLike()
         checkDislike()
+        setUserPhoto()
+        getVideos()
     }, []);
 
     return (
@@ -249,8 +274,13 @@ function Video(this: any) {
                     {video.description}
                 </div>
                 <div className="comments-container">
-                    <input type="text" value={state.comment} onChange={handleChangeComment} />
-                    <button onClick={() => submit()}>Valider</button>
+                    <div className='user-comment'>
+                        <img className='profile-img' src={uploadUrl + '/photos/' + photo} alt="" />
+                        <div>
+                            <input type="text" placeholder='Ajouter un commentaire' value={state.comment} onChange={handleChangeComment} />
+                            <button onClick={() => submit()}>Ajouter un commentaire</button>
+                        </div>
+                    </div>
                     <div className='other-comments-container'>
                         {comments.map((comment, index) => {
                             return <Comment key={index} {...comment} />
@@ -259,7 +289,9 @@ function Video(this: any) {
                 </div>
             </div>
             <div className="suggestion-container">
-
+                {videos.map((video, index) => {
+                    return <VideoMiniature key={index} {...video} />
+                })}
             </div>
 
         </section>
