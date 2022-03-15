@@ -2,32 +2,17 @@
 
 
 .video-container{
+
     .video-miniature-container{
         // height: 100%;
         display: flex;
         flex-direction: column;
-        width: 23%;
-        margin-right: 2rem;
-        margin-top: 2rem;
-
-        &:nth-child(1){
-            
-            margin-top: 0;
-        }
-        &:nth-child(2){
-            
-            margin-top: 0;
-        }
-        &:nth-child(3){
-            
-            margin-top: 0;
-        }
-        &:nth-child(4){
-            
-            margin-top: 0;
-        }
-
-      
+        flex:1;
+        margin-right:1%;
+        margin-left: 1%;
+        margin-bottom: 2rem;
+        min-width: 300px;
+        width: 20%;
 
         .video-miniature{
             height: 100%;

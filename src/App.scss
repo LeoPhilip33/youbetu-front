@@ -27,9 +27,11 @@ code {
   
 
 .flex-container-navbar{
+    padding-top: $navbar-height;
+    padding-left: $navbar-width;
     display: flex;
 }
 .container-app{
     width: 100%;
-    height: calc(100vh - 50px);
+    height: calc(100vh - $navbar-height);
 }
