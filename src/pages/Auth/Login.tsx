@@ -50,20 +50,20 @@ function Login() {
     return (
         <div className="auth-container" >
             <LateralNavbar />
-            <form onSubmit={handleSubmit}>
-
-                <div className="label-input-container">
-
-                    <label> email:</label>
-                    <input type="email" name="email" value={state.email} onChange={handleChangeEmail} />
+            <form onSubmit={handleSubmit} className="form-container">
+                <h1 className="title-auth"> Connectez-vous !</h1>
+                <div className="container-form">
+                    <div className="label-input-container">
+                        <input className="input-auth" placeholder="Adresse e-mail" type="email" name="email" value={state.email} onChange={handleChangeEmail} />
+                    </div>
+                    <div className="label-input-container">
+                        <input className="input-auth" placeholder="Saisissez votre mot de passe" type="password" name="password" value={state.password} onChange={handleChangePassword} />
+                    </div>
+                    <div className="btn-add-account">
+                        <button className='ajouter-compte' type="submit"> Valider </button>
+                    </div>
+                    <p className="no-account">Pas de compte ? <Link to='/register' className="register-link">Créer un compte</Link></p>
                 </div>
-                <div className="label-input-container">
-
-                    <label> password:</label>
-                    <input type="password" name="password" value={state.password} onChange={handleChangePassword} />
-                </div>
-                <button className='ajouter-compter' type="submit"> Valider </button>
-                <p>Pas de compte ? <Link to='/register'>Créer un compte</Link></p>
             </form>
 
         </div >

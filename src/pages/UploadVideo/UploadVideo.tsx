@@ -3,7 +3,7 @@ import './UploadVideo.scss';
 import React from "react";
 import url from "../../config";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getUserId, authenticatedFetch } from '../../utils'
 import LateralNavbar from '../../components/LateralNavbar/LateralNavbar';
 

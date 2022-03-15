@@ -54,7 +54,7 @@ function Navbar() {
                         </button>
                         :
                         <Link className='login-btn' to="login">
-                            Se connecter
+                            <button className='btn-connexion'> SE CONNECTER </button>
                         </Link>
                     }
                 </div>

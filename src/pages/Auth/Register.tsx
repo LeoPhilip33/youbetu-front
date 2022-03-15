@@ -105,32 +105,28 @@ function Register() {
     return (
         <div className="auth-container" >
             <LateralNavbar />
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className="form-container">
+                <h1 className="title-auth"> Connectez-vous !</h1>
                 <div className="label-input-container">
-                    <label> name:</label>
-                    <input type="text" name="name" onChange={handleChangeName} value={state.name} />
+                    <input className="input-auth" placeholder="name" type="text" name="name" onChange={handleChangeName} value={state.name} />
                 </div>
                 <div className="label-input-container">
-                    <label> email:</label>
-                    <input type="email" name="email" onChange={handleChangeEmail} value={state.email} />
+                    <input className="input-auth" placeholder="email" type="email" name="email" onChange={handleChangeEmail} value={state.email} />
                 </div>
                 <div className="label-input-container">
-                    <label> photo:</label>
-                    <input type="file" name="photo" onChange={handleChangePhoto} />
+                    <label> Ajouter une photo :</label> <br />
+                    <input className='input-auth' type="file" name="photo" onChange={handleChangePhoto} />
                 </div>
                 <div className="label-input-container">
-
-                    <label> password:</label>
-                    <input type="password" name="password" onChange={handleChangePassword} value={state.password} />
+                    <input className="input-auth" placeholder="Password" type="password" name="password" onChange={handleChangePassword} value={state.password} />
                 </div>
                 <div className="label-input-container">
-
-                    <label> Confirme le password:</label>
-                    <input type="password" name="passwordConfirmation" onChange={handleChangePasswordConfirmation} value={state.password_confirmation} />
-
-                    <button className='ajouter-compter' type="submit"> Ajouter </button>
-                    <p>Déjà un compte ? <Link to='/login'>Connecte toi</Link></p>
+                    <input className="input-auth" placeholder="Confirme le password" type="password" name="passwordConfirmation" onChange={handleChangePasswordConfirmation} value={state.password_confirmation} />
                 </div>
+                <div className="btn-add-account">
+                    <button className='ajouter-compte' type="submit"> Ajouter </button>
+                </div>
+                <p className="no-account">Déjà un compte ? <Link to='/login' className="register-link">Connecte toi</Link></p>
             </form>
 
         </div >
