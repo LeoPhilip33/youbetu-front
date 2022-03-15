@@ -4,7 +4,7 @@ import search from '../../img/search.png'
 import user from '../../img/profile.png'
 import './Navbar.scss';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import url, { uploadUrl } from '../../config';
 import { authenticatedFetch } from '../../utils';
@@ -14,6 +14,7 @@ function Navbar() {
 
     const [photo, setPhoto] = useState('')
     const [userVisible, setUserVisible] = useState(false)
+    let token = localStorage.userId
 
 
     useEffect(() => {
@@ -22,7 +23,7 @@ function Navbar() {
                 setPhoto(res.data.photo);
 
             })
-    }, []);
+    }, [token]);
     return (
         <div className='navbar'>
             <div className='menu-logo'>

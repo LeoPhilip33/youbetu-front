@@ -10,15 +10,21 @@ import UploadVideo from './pages/UploadVideo/UploadVideo'
 import Video from './pages/Video/Video'
 import { Provider } from 'react-redux';
 import store from './store';
+import { createContext } from 'react'
 
 function App() {
 
+	const userId = {
+		id: String,
+	};
 
+	const userIdContext = createContext(userId);
 
 	return (
 
 		<Router>
-			<Provider store={store}>
+			<userIdContext.Provider value={userId}>
+
 				<div className='container'></div>
 				<Navbar />
 				<div className='flex-container-navbar'>
@@ -33,7 +39,7 @@ function App() {
 						</Routes>
 					</div >
 				</div >
-			</Provider>
+			</userIdContext.Provider>
 		</Router >
 	);
 }

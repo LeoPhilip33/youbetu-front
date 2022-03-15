@@ -78,7 +78,6 @@ function Video(this: any) {
     }
 
     const submit = () => {
-        console.log('aaaaaaaa')
         const data = {
             video_id: video.id,
             user_id: localStorage.userId,
@@ -206,7 +205,8 @@ function Video(this: any) {
         checkDislike()
         setUserPhoto()
         getVideos()
-    }, []);
+    }, [id]);
+
 
     return (
         <section className='video-suggestion-container'>

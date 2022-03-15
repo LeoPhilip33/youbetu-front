@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom"
 function VideoMiniature(props: any) {
     return (
         <div className='video-miniature-container'>
-            <Link to={`/watch/${props.id}/`} className='video-miniature'>
+            <Link to={`/watch/${props.id}`} className='video-miniature'>
                 <img className='miniature' src={uploadUrl + '/miniatures/' + props.miniature} />
                 <div className='user-view-container'>
                     <img className='userImg' src={uploadUrl + '/photos/' + props.userPhoto} alt="" />
