@@ -21,7 +21,7 @@ function LateralNavbar() {
                         <p> Explorer </p>
                     </div>
                 </Link>
-                <Link className='text-decoration-none-link' to="/">
+                <Link className='text-decoration-none-link' to="/liked-video">
                     <div className='alignement-logo'>
                         <img src={logo_like} className="logo_lateral" alt="Like youbetu" />
                         <p> Vidéos "J'aime" </p>

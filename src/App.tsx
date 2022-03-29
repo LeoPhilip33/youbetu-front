@@ -11,6 +11,7 @@ import Video from './pages/Video/Video'
 import { Provider } from 'react-redux';
 import store from './store';
 import { createContext } from 'react'
+import LikedVideo from './pages/LikedVideo/LikedVideo'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
 							<Route path="/login" element={<Login />}></Route>
 							<Route path="/upload-video" element={<UploadVideo />}></Route>
 							<Route path="/watch/:id" element={<Video />}></Route>
+							<Route path="/liked-video" element={<LikedVideo />}></Route>
 						</Routes>
 					</div >
 				</div >
