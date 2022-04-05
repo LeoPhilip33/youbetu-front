@@ -13,6 +13,7 @@ import store from './store';
 import { createContext } from 'react'
 import LikedVideo from './pages/LikedVideo/LikedVideo'
 import Subscriber from './pages/Subscriber/Subscriber'
+import Profile from './pages/Profile/Profile'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
 							<Route path="/watch/:id" element={<Video />}></Route>
 							<Route path="/liked-video" element={<LikedVideo />}></Route>
 							<Route path="/subscriber" element={<Subscriber />}></Route>
+							<Route path="/profile/:id" element={<Profile />}></Route>
 						</Routes>
 					</div >
 				</div >
