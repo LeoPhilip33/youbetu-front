@@ -19,6 +19,7 @@ interface Istate {
 }
 
 function Register() {
+
     const [state, setState] = useState<Istate>({
         name: '',
         email: '',
@@ -100,8 +101,6 @@ function Register() {
                 console.error(error)
             })
     }
-
-
     return (
         <div className="auth-container" >
             <LateralNavbar />
