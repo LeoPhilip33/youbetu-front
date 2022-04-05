@@ -12,7 +12,7 @@ function LateralNavbar() {
                 <Link className='text-decoration-none-link' to="/">
                     <div className='alignement-logo'>
                         <img src={logo_home} className="logo_lateral" alt="Home youbetu" />
-                        <p> Accueil aaaaaaaaaaaaaaaaaaa </p>
+                        <p> Accueil </p>
                     </div>
                 </Link>
                 <Link className='text-decoration-none-link' to="/">
