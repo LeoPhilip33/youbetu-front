@@ -27,7 +27,7 @@ function LateralNavbar() {
                         <p> Vidéos "J'aime" </p>
                     </div>
                 </Link>
-                <Link className='text-decoration-none-link' to="/">
+                <Link className='text-decoration-none-link' to="/subscriber">
                     <div className='alignement-logo'>
                         <img src={logo_abonnement} className="logo_lateral" alt="Like youbetu" />
                         <p> ABONNEMENTS </p>

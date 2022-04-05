@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { createContext } from 'react'
 import LikedVideo from './pages/LikedVideo/LikedVideo'
+import Subscriber from './pages/Subscriber/Subscriber'
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
 							<Route path="/upload-video" element={<UploadVideo />}></Route>
 							<Route path="/watch/:id" element={<Video />}></Route>
 							<Route path="/liked-video" element={<LikedVideo />}></Route>
+							<Route path="/subscriber" element={<Subscriber />}></Route>
 						</Routes>
 					</div >
 				</div >
