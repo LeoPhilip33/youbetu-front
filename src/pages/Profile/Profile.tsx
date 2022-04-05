@@ -10,15 +10,32 @@ import Sub from '../../components/Sub/Sub';
 import { useParams } from 'react-router-dom';
 
 function Profile() {
-    const [users, setUsers] = React.useState([])
+    const [user, setUser] = React.useState({
+        created_at: "",
+        email: "",
+        id: null,
+        name: "",
+        photo: "",
+        subscriber: null,
+        updated_at: "",
+    })
+
+    const [videos, setVideos] = React.useState([])
 
     let { id } = useParams();
 
     React.useEffect(() => {
-        axios.get(`${url}/users/${localStorage.userId}`)
+        axios.get(`${url}/user/${id}`)
             .then((res) => {
-                setUsers(res.data);
+                console.log(res)
+                setUser(res.data);
             })
+
+        axios.get(`${url}/video-user/${id}`)
+            .then((res) => {
+                setVideos(res.data);
+            })
+
     }, []);
     return (
         <div className='home-page'>
@@ -26,7 +43,13 @@ function Profile() {
             <LateralNavbar />
 
             <section className='profile-container'>
-                <h1>Profile</h1>
+                <h1>{user.name}</h1>
+                <h2>{user.subscriber} abonnés</h2>
+                <section className='video-container'>
+                    {videos.map((video, index) => {
+                        return <VideoMiniature key={index} {...video} />
+                    })}
+                </section>
             </section>
         </div>
     );
