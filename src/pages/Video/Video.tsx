@@ -252,13 +252,13 @@ function Video(this: any) {
                 </div>
                 <div className="channel-container">
                     <div className='channel-info-container'>
-                        <div className='username-subscriber-subsribe-container'>
+                        <Link to={`/profile/${user.id}`} className='username-subscriber-subsribe-container'>
                             <img src={uploadUrl + '/photos/' + user.photo} alt="" />
                             <div className='username-subscriber'>
                                 <p className='username'>{user.name}</p>
                                 <p className='subscriber'>{user.subscriber} abonnés</p>
                             </div>
-                        </div>
+                        </Link>
                         <div className='subscribe-join-container'>
                             <button className='join'>REJOINDRE</button>
                             {!sub ?
