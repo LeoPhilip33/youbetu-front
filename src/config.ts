@@ -1,5 +1,5 @@
-const url: string = 'http://127.0.0.1:8000/api'
-export const uploadUrl: string = 'http://127.0.0.1:8000/upload'
+const url: string = 'http://youbetu-back.ddns.net/api'
+export const uploadUrl: string = 'http://youbetu-back.ddns.net/upload'
 
 
 export default url
