@@ -9,12 +9,15 @@ import axios from 'axios';
 import url, { uploadUrl } from '../../config';
 import { authenticatedFetch } from '../../utils';
 import UserInfo from './UserInfo';
+import { UserContext } from '../../UserContext';
 
 function Navbar() {
 
     const [photo, setPhoto] = useState('')
     const [userVisible, setUserVisible] = useState(false)
     let token = localStorage.userId
+
+    const [isLogged, setIsLogged] = useContext(UserContext);
 
 
     useEffect(() => {
@@ -59,7 +62,7 @@ function Navbar() {
                     }
                 </div>
             </div>
-            {userVisible ?
+            {userVisible && isLogged ?
                 < UserInfo />
                 : ''
             }

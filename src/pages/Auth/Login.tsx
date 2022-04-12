@@ -1,9 +1,11 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import url from "../../config"
 import './Auth.scss'
 import LateralNavbar from "../../components/LateralNavbar/LateralNavbar";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../UserContext";
+import { Navigate } from 'react-router'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -18,6 +20,12 @@ function Login() {
         email: '',
         password: '',
     })
+
+    const [isLogged, setIsLogged] = useContext(UserContext);
+
+
+
+
 
     const handleChangeEmail = (e: { target: { value: any } }) => {
         setState({
@@ -41,6 +49,7 @@ function Login() {
             .then((res) => {
                 localStorage.token = res.data[2]
                 localStorage.userId = res.data[0].id
+                setIsLogged(true)
             })
             .catch((error) => {
                 console.error(error)
@@ -65,6 +74,9 @@ function Login() {
                     <p className="no-account">Pas de compte ? <Link to='/register' className="register-link">Créer un compte</Link></p>
                 </div>
             </form>
+            {isLogged ?
+                <Navigate to={{ pathname: "/" }} />
+                : ''}
 
         </div >
     )

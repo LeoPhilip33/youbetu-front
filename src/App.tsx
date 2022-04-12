@@ -10,23 +10,21 @@ import UploadVideo from './pages/UploadVideo/UploadVideo'
 import Video from './pages/Video/Video'
 import { Provider } from 'react-redux';
 import store from './store';
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import LikedVideo from './pages/LikedVideo/LikedVideo'
 import Subscriber from './pages/Subscriber/Subscriber'
 import Profile from './pages/Profile/Profile'
-
+import { UserContext } from './UserContext';
 function App() {
 
-	const userId = {
-		id: String,
-	};
+	const [isLogged, setIsLogged] = useState<boolean>(false);
 
-	const userIdContext = createContext(userId);
+
 
 	return (
 
 		<Router>
-			<userIdContext.Provider value={userId}>
+			<UserContext.Provider value={[isLogged, setIsLogged]}>
 
 				<div className='container'></div>
 				<Navbar />
@@ -45,7 +43,7 @@ function App() {
 						</Routes>
 					</div >
 				</div >
-			</userIdContext.Provider>
+			</UserContext.Provider>
 		</Router >
 	);
 }

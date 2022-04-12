@@ -1,10 +1,11 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import url from "../../config"
 import './Auth.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { BrowserRouter as Redirect, Router, Route, Routes } from "react-router-dom"
 import LateralNavbar from "../../components/LateralNavbar/LateralNavbar"
+import { UserContext } from "../../UserContext"
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
@@ -27,6 +28,8 @@ function Register() {
         password: '',
         password_confirmation: '',
     })
+
+    const [isLogged, setIsLogged] = useContext(UserContext);
 
     const handleChangeName = (e: { target: { value: any } }) => {
         setState({
@@ -96,6 +99,7 @@ function Register() {
             .then((res) => {
                 localStorage.token = res.data[2]
                 localStorage.userId = res.data[0].id
+                setIsLogged(true)
             })
             .catch((error) => {
                 console.error(error)
@@ -127,6 +131,9 @@ function Register() {
                 </div>
                 <p className="no-account">Déjà un compte ? <Link to='/login' className="register-link">Connecte toi</Link></p>
             </form>
+            {isLogged ?
+                <Navigate to={{ pathname: "/" }} />
+                : ''}
 
         </div >
     )
