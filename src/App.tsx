@@ -15,6 +15,7 @@ import LikedVideo from './pages/LikedVideo/LikedVideo'
 import Subscriber from './pages/Subscriber/Subscriber'
 import Profile from './pages/Profile/Profile'
 import { UserContext } from './UserContext';
+import Dashboard from './pages/Dashboard/Dashboard'
 function App() {
 
 	const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -40,6 +41,7 @@ function App() {
 							<Route path="/liked-video" element={<LikedVideo />}></Route>
 							<Route path="/subscriber" element={<Subscriber />}></Route>
 							<Route path="/profile/:id" element={<Profile />}></Route>
+							<Route path="/dashboard" element={<Dashboard />}></Route>
 						</Routes>
 					</div >
 				</div >
