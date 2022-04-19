@@ -14,7 +14,6 @@ import { UserContext } from '../../UserContext';
 function Navbar() {
 
     const [photo, setPhoto] = useState('')
-    const [userVisible, setUserVisible] = useState(false)
     let token = localStorage.userId
 
     const [isLogged, setIsLogged] = useContext(UserContext);
@@ -53,7 +52,8 @@ function Navbar() {
                     {localStorage.token !== null && localStorage.token !== undefined ?
 
                         <button>
-                            <img src={uploadUrl + '/photos/' + photo} onClick={() => setUserVisible(!userVisible)} className="user" alt="user" />
+                            <Link to="dashboard">
+                                <img src={uploadUrl + '/photos/' + photo} className="user" alt="user" /></Link>
                         </button>
                         :
                         <Link className='login-btn' to="login">
@@ -62,10 +62,7 @@ function Navbar() {
                     }
                 </div>
             </div>
-            {userVisible && isLogged ?
-                < UserInfo />
-                : ''
-            }
+
         </div>
     );
 }
