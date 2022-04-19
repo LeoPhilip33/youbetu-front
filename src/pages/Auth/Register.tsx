@@ -66,8 +66,6 @@ function Register() {
     }
 
     const handleChangePhoto = (e: any) => {
-        console.log('img change')
-        console.log(e)
         setState({
             name: state.name,
             email: state.email,
@@ -80,7 +78,6 @@ function Register() {
 
 
     const handleSubmit = (e: { preventDefault: VoidFunction }) => {
-        console.log(state.photo)
 
         e.preventDefault();
         const data = new FormData()

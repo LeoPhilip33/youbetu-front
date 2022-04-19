@@ -27,7 +27,6 @@ function Profile() {
     React.useEffect(() => {
         axios.get(`${url}/user/${id}`)
             .then((res) => {
-                console.log(res)
                 setUser(res.data);
             })
 

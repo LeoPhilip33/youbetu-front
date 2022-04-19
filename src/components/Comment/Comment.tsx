@@ -15,11 +15,10 @@ function Comment(props: any) {
     })
 
     React.useEffect(() => {
-        console.log(props.user_id)
+
         axios.get(`${url}/user/${props.user_id}`)
             .then((res) => {
                 setUser(res.data);
-                console.log(res.data)
             })
     }, []);
 

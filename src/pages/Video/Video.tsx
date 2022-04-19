@@ -56,7 +56,15 @@ function Video(this: any) {
     const getVideos = () => {
         axios.get(`${url}/videos`)
             .then((res) => {
-                setVideos(res.data);
+
+                let videos = res.data
+                const indexOfObject = videos.findIndex((object: { id: string; }) => {
+                    return object.id == id;
+                });
+
+
+                videos.splice(indexOfObject, 1);
+                setVideos(videos);
             })
 
     };
@@ -193,7 +201,6 @@ function Video(this: any) {
     const getComments = async (e: Number) => {
         await axios.get(`${url}/comments/${e}`)
             .then(res => {
-                console.log(res.data)
                 setComments(res.data)
             })
     }
