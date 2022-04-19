@@ -3,7 +3,7 @@ import './UploadVideo.scss';
 import React from "react";
 import url from "../../config";
 import axios from "axios";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { getUserId, authenticatedFetch } from '../../utils'
 import LateralNavbar from '../../components/LateralNavbar/LateralNavbar';
 
@@ -18,8 +18,11 @@ class Register extends React.Component {
         description: '',
         miniature: '',
         video: '',
-        user_id: null
+        user_id: null,
+        isPublied: false
     };
+
+
 
     handleSubmit = (event: { preventDefault: () => void; }) => {
 
@@ -37,8 +40,9 @@ class Register extends React.Component {
         authenticatedFetch('POST', `/videos`, data)
             .then((res) => {
                 localStorage.token = res.data[2]
-                let navigate = useNavigate()
-                navigate("/home")
+                this.setState({
+                    isPublied: true
+                })
             }).catch((error) => {
                 console.error(error)
             })
@@ -99,6 +103,9 @@ class Register extends React.Component {
                         </div>
                     </form>
                 </div>
+                {this.state.isPublied == true ?
+                    <Navigate to={{ pathname: "/" }} />
+                    : 'aaaaaa'}
             </div >
         );
     }
