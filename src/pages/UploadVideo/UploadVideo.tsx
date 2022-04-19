@@ -36,16 +36,12 @@ class Register extends React.Component {
 
         authenticatedFetch('POST', `/videos`, data)
             .then((res) => {
-                console.log(res.data)
                 localStorage.token = res.data[2]
                 let navigate = useNavigate()
                 navigate("/home")
             }).catch((error) => {
                 console.error(error)
             })
-
-
-
 
     }
     handleChangeTitle = (event: { target: { value: any; }; }) => {

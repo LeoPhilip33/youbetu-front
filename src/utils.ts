@@ -27,3 +27,23 @@ export const getUserId = async () => {
         })
 
 }
+
+export function strTitleMaxLenght(strLenght:string){
+    let strResult:string;
+    if(strLenght.length > 30){
+        strResult = strLenght.substr(0, 30) + " ...";
+    } else{
+        strResult = strLenght;
+    }
+    return strResult;
+}
+
+export function strDescriptionMaxLenght(strLenght:string){
+    let strResult:string;
+    if(strLenght.length > 100){
+        strResult = strLenght.substr(0, 100) + " ...";
+    } else{
+        strResult = strLenght;
+    }
+    return strResult;
+}

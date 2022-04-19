@@ -94,6 +94,13 @@
                             border: 1px solid $blue;
                             background-color: $white;
                             margin-right: 2rem;
+                            transition: 0.2s;
+
+                            &:hover{
+                                background-color: $blue;
+                                color: $white;
+                                transition: 0.2s;
+                            }
                         }
 
                         &.subscribe{
@@ -154,6 +161,7 @@
                     }
 
                     button{
+                        cursor: pointer;
                         background-color: $blue;
                         color: $white;
                         border: none;
@@ -162,6 +170,12 @@
                         margin-top: 1rem;
                         font-size: 1.5rem;
                         font-weight: 600;
+                        transition: 0.2s;
+
+                        &:hover{
+                            transition: 0.2s;
+                            transform: scale(1.05);
+                        }
                     }
                 }
             }
@@ -170,5 +184,29 @@
 
     .suggestion-container{
         width: 28%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .video-suggestion-container{
+        flex-direction: column;
+    }
+    .video-container{
+        width: 100%!important;
+    }
+    .suggestion-container{
+        margin-top: 5rem;
+    }
+  }
+
+
+.like-container, .dislike-container, .share-container {
+    img{
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover{
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
     }
 }
