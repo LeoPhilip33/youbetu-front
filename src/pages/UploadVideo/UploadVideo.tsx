@@ -44,9 +44,6 @@ class Register extends React.Component {
                 console.error(error)
             })
 
-
-
-
     }
     handleChangeTitle = (event: { target: { value: any; }; }) => {
         this.setState(
