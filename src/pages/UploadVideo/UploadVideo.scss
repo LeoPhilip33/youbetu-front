@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.container-import-video{
+.container-import-video {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,17 +9,20 @@
     width: 100%;
     background-color: #3f3f3f;
 }
-.titre-upload{
+
+.titre-upload {
     margin-top: 1rem;
 }
-.titre-input-upload{
+
+.titre-input-upload {
     width: 100%;
     height: 50px;
     border: 0px;
     border-bottom: 3px solid black;
 
 }
-.textarea-input-upload{
+
+.textarea-input-upload {
     border: 0px;
     border-bottom: 3px solid black;
     width: 100%;
@@ -28,37 +31,51 @@
     max-height: 200px;
     resize: vertical;
 }
-.textarea-input-upload::placeholder{
+
+.textarea-input-upload::placeholder {
     padding: 10px;
 }
-.container-btn-upload{
+
+.container-btn-upload {
     margin-top: 30px;
     display: flex;
     justify-content: center;
 }
-.submit-btn-upload{
+
+.submit-btn-upload {
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 5px;
     border: 0px;
     transition: 0.1s;
 }
-.submit-btn-upload:hover{
+
+.submit-btn-upload:hover {
     font-size: 1.03rem;
     transition: 0.1s;
 }
-.container-import-video-modifications{
+
+.container-import-video-modifications {
     background-color: $white;
     padding: 40px;
 }
-.title-import-video{
+
+.title-import-video {
     text-align: center;
 }
-.flex-uploads{
+
+.flex-uploads {
     display: flex;
     margin-top: 20px;
 }
-.title-upload{
+
+.title-upload {
     font-size: 0.9rem;
     color: #444444;
+}
+
+
+.error-msg {
+    color: $red;
+    text-align: center;
 }

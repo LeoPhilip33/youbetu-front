@@ -19,7 +19,8 @@ class Register extends React.Component {
         miniature: '',
         video: '',
         user_id: null,
-        isPublied: false
+        isPublied: false,
+        error: ''
     };
 
 
@@ -37,6 +38,8 @@ class Register extends React.Component {
         data.append('video', this.state.video)
         data.append('user_id', localStorage.userId)
 
+
+
         authenticatedFetch('POST', `/videos`, data)
             .then((res) => {
                 localStorage.token = res.data[2]
@@ -44,7 +47,9 @@ class Register extends React.Component {
                     isPublied: true
                 })
             }).catch((error) => {
-                console.error(error)
+                this.setState({
+                    error: 'Remplir les champs manquants lo'
+                })
             })
 
     }
@@ -83,7 +88,7 @@ class Register extends React.Component {
                     <h1 className='title-import-video'>Importer des vidéos</h1>
                     <form onSubmit={this.handleSubmit} encType="multipart/form-data">
                         <div className='titre-upload'>
-                            <input className='titre-input-upload' required type="text" placeholder='Titre (obligatoire)' name="titre" onChange={this.handleChangeTitle} />
+                            <input className='titre-input-upload' type="text" placeholder='Titre' name="titre" onChange={this.handleChangeTitle} />
                         </div>
                         <div className='titre-upload'>
                             <textarea className='textarea-input-upload' name="description" placeholder='Description' onChange={this.handleChangeDescription} ></textarea>
@@ -101,6 +106,7 @@ class Register extends React.Component {
                         <div className='container-btn-upload'>
                             <button className='submit-btn-upload' type="submit"> Enregistrer la vidéo </button>
                         </div>
+                        <p className='error-msg'> {this.state.error}</p>
                     </form>
                 </div>
                 {this.state.isPublied == true ?
