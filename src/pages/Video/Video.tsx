@@ -16,6 +16,7 @@ import moreImg from '../../img/icons/more.png';
 import { authenticatedFetch } from '../../utils';
 import Comment from '../../components/Comment/Comment'
 import VideoMiniature from '../../components/Video/VideoMiniature';
+import Skeleton from 'react-loading-skeleton';
 
 
 function Video(this: any) {
@@ -296,9 +297,10 @@ function Video(this: any) {
                 </div>
             </div>
             <div className="suggestion-container">
-                {videos.map((video, index) => {
-                    return <VideoMiniature key={index} {...video} />
-                })}
+                {videos.length !== 0 ?
+                    videos.map((video, index) => {
+                        return <VideoMiniature key={index} {...video} />
+                    }) : <Skeleton containerClassName="skeletons-container video-page" className='skeleton' count={6} />}
             </div>
 
         </section>
