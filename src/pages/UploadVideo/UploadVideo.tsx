@@ -48,7 +48,7 @@ class Register extends React.Component {
                 })
             }).catch((error) => {
                 this.setState({
-                    error: 'Remplir les champs manquants lo'
+                    error: 'Remplir les champs manquants.'
                 })
             })
 
@@ -111,7 +111,7 @@ class Register extends React.Component {
                 </div>
                 {this.state.isPublied == true ?
                     <Navigate to={{ pathname: "/" }} />
-                    : 'aaaaaa'}
+                    : ''}
             </div >
         );
     }
