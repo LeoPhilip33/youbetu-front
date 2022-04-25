@@ -30,7 +30,7 @@ function Home() {
 
             <LateralNavbar />
 
-            <h1>Mes videos</h1>
+            <h1 className="videos">Mes videos</h1>
             <section className='video-container'>
                 {videos.map((video, index) => {
 
