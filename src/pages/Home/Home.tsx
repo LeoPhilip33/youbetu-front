@@ -6,6 +6,7 @@ import axios from 'axios'
 import url from '../../config';
 import LateralNavbar from '../../components/LateralNavbar/LateralNavbar';
 import { useSelector } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
 
 function Home() {
     const [videos, setVideos] = React.useState([])
@@ -22,9 +23,11 @@ function Home() {
             <LateralNavbar />
 
             <section className='video-container'>
-                {videos.map((video, index) => {
-                    return <VideoMiniature key={index} {...video} />
-                })}
+                {videos.length !== 0 ?
+                    videos.map((video, index) => {
+                        return <VideoMiniature key={index} {...video} />
+                    })
+                    : <Skeleton containerClassName="skeletons-container" className='skeleton' count={6} />}
             </section>
         </div>
     );
